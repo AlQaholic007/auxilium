@@ -39,6 +39,7 @@ describe("Database Tests", function() {
         else done();
       });
     });
+    
     it("Dont save incorrect format to database", function(done) {
       //Attempt to save with wrong info. An error should trigger
       var wrongSave = Name({
