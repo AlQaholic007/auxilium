@@ -10,11 +10,12 @@ For some it's a Savior. For others, it's a Messiah. Auxilium is powerful open-so
 - Register a disaster/event.
 - Get updates on the disaster through a dedicated chatroom in realtime.
 - All events are divided into following categories
-  - Accident 
-  - Fire
-  - Natural
-  - Angry Mob
-  - Others
+  - Accident(Orange)
+  - Fire(Red)
+  - Natural(Brown)
+  - Angry Mob(Grey)
+  - Bomb Threat(Black)
+  - Others(Blue)
 - Trigger an SoS for immediate help from a nearby user.
 - Dedicated API for developers
 - Get information about the safest route to take from Place A to   Place B.
