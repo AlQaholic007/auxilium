@@ -47,7 +47,7 @@ app.use(
     )
   })
 );
-app.use(logger("tiny"));
+// app.use(logger("tiny"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());

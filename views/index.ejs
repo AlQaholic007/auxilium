@@ -99,23 +99,30 @@ function startClustering(map, events, ui) {
       var randomDataPoint = getRandomDataPoint(cluster);
       var data = randomDataPoint.getData();
       
-      var icon_url = "http://cdn.onlinewebfonts.com/svg/img_537816.png";
-      switch(data.event) {
-        case 'fire': icon_url = "https://www.svgrepo.com/show/172374/fire-with-logs-cross.svg";
-                        break;
-        case 'explosion': icon_url = "https://www.svgrepo.com/show/79567/bomb.svg";
-                        break;
-        case 'curfew': icon_url = "https://cdn.iconscout.com/icon/premium/png-512-thumb/angry-crowd-1649497-1399702.png";
-                        break;
-        case 'natural': icon_url = "https://www.svgrepo.com/show/59214/tsunami-insurance-symbol-of-a-home-and-a-big-ocean-wave.svg";
-                        break;
-        case 'accident': icon_url = "https://www.svgrepo.com/show/4487/accident.svg"
-                        break;
-        default: icon_url = "http://cdn.onlinewebfonts.com/svg/img_537816.png";
-      }
+      var icon_url;
+        switch (data.event) {
+          case "fire":
+            icon_url = `<svg height="100" width="100"><circle cx="50" cy="50" r="${data.radius * 5 || 10}" stroke="rgba(207, 0, 15, 0.65)" stroke-width="2" fill="rgba(207, 0, 15, 0.65)" /></svg>`;
+            break;
+          case "explosion":
+            icon_url = `<svg height="100" width="100"><circle cx="50" cy="50" r="${data.radius * 5 || 10}" stroke="rgba(46, 49, 49, 0.65)" stroke-width="2" fill="rgba(46, 49, 49, 0.65)" /></svg>`;
+            break;
+          case "curfew":
+            icon_url = `<svg height="100" width="100"><circle cx="50" cy="50" r="${data.radius * 5 ||
+              10}" stroke="rgba(232, 236, 241, 0.65)" stroke-width="2" fill="rgba(232, 236, 241, 0.65)" /></svg>`;
+            break;
+          case "natural":
+            icon_url = `<svg height="100" width="100"><circle cx="50" cy="50" r="${data.radius * 5 || 10}" stroke="rgba(127,59,66, 0.65)" stroke-width="2" fill="rgba(127,59,66, 0.65)" /></svg>`;
+            break;
+          case "accident":
+            icon_url = `<svg height="100" width="100"><circle cx="50" cy="50" r="${data.radius * 5 || 10}" stroke="rgba(249, 105, 14, 0.65)" stroke-width="2" fill="rgba(249, 105, 14, 0.65)" /></svg>`;
+            break;
+          default:
+            icon_url = `<svg height="100" width="100"><circle cx="50" cy="50" r="${data.radius * 5 || 10}" stroke="rgba(44, 130, 201, 0.65)" stroke-width="2" fill="rgba(44, 130, 201, 0.65)" /></svg>`;
+        }
       
-      var clusterMarker = new H.map.Marker(cluster.getPosition(), {
-      icon: new H.map.Icon(icon_url, {
+      var clusterMarker = new H.map.DomMarker(cluster.getPosition(), {
+      icon: new H.map.DomIcon(icon_url, {
         size: {w: 50, h: 50},
         anchor: {x: 25, y: 25}
       }),
@@ -129,25 +136,31 @@ function startClustering(map, events, ui) {
     getNoisePresentation: function(noisePoint) {
       var data = noisePoint.getData();
       
-      var icon_url = "http://cdn.onlinewebfonts.com/svg/img_537816.png";
-      console.log(data);
-      switch(data.type) {
-        case 'fire': icon_url = "/images/fire.svg";
-                        break;
-        case 'explosion': icon_url = "/images/bomb.svg";
-                        break;
-        case 'curfew': icon_url = "/images/curfew.png";
-                        break;
-        case 'natural': icon_url = "/images/natural.svg";
-                        break;
-        case 'accident': icon_url = "/images/accident.svg"
-                        break;
-        default: icon_url = "http://cdn.onlinewebfonts.com/svg/img_537816.png";
-      }
+      var icon_url;
+        switch (data.type) {
+          case "fire":
+            icon_url = `<svg height="100" width="100"><circle cx="50" cy="50" r="${data.radius * 5 || 10}" stroke="rgba(207, 0, 15, 0.65)" stroke-width="2" fill="rgba(207, 0, 15, 0.65)" /></svg>`;
+            break;
+          case "explosion":
+            icon_url = `<svg height="100" width="100"><circle cx="50" cy="50" r="${data.radius * 5 || 10}" stroke="rgba(46, 49, 49, 0.65)" stroke-width="2" fill="rgba(46, 49, 49, 0.65)" /></svg>`;
+            break;
+          case "curfew":
+            icon_url = `<svg height="100" width="100"><circle cx="50" cy="50" r="${data.radius * 5 ||
+              10}" stroke="rgba(232, 236, 241, 0.65)" stroke-width="2" fill="rgba(232, 236, 241, 0.65)" /></svg>`;
+            break;
+          case "natural":
+            icon_url = `<svg height="100" width="100"><circle cx="50" cy="50" r="${data.radius * 5 || 10}" stroke="rgba(127,59,66, 0.65)" stroke-width="2" fill="rgba(127,59,66, 0.65)" /></svg>`;
+            break;
+          case "accident":
+            icon_url = `<svg height="100" width="100"><circle cx="50" cy="50" r="${data.radius * 5 || 10}" stroke="rgba(249, 105, 14, 0.65)" stroke-width="2" fill="rgba(249, 105, 14, 0.65)" /></svg>`;
+            break;
+          default:
+            icon_url = `<svg height="100" width="100"><circle cx="50" cy="50" r="${data.radius * 5 || 10}" stroke="rgba(44, 130, 201, 0.65)" stroke-width="2" fill="rgba(44, 130, 201, 0.65)" /></svg>`;
+        }
 
-      var noiseMarker = new H.map.Marker(noisePoint.getPosition(), {
+      var noiseMarker = new H.map.DomMarker(noisePoint.getPosition(), {
         min: noisePoint.getMinZoom(),
-        icon: new H.map.Icon(icon_url, {
+        icon: new H.map.DomIcon(icon_url, {
           size: {w: 30, h: 30},
           anchor: {x: 20, y: 20}
         })

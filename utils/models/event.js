@@ -27,7 +27,9 @@ var eventSchema = mongoose.Schema({
   comments: Array,
   likes: String,
   createdAt: String,
-  type: String
+  type: String,
+  isExpired: { type: Boolean, default: false },
+  isSOS: { type: Boolean, default: false }
 });
 
 module.exports = mongoose.model("event", eventSchema);
